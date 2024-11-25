@@ -1,0 +1,56 @@
+{
+  "name": "fastify-spark",
+  "version": "1.0.0",
+  "description": "A fastify typescript starter kit.",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint .",
+    "dev": "tsx watch -r tsconfig-paths/register --env-file=.env src | pino-pretty --colorize --levelFirst --translateTime --ignore pid,hostname",
+    "build": "tsc -p tsconfig.json",
+    "start": "node -r tsconfig-paths/register src",
+    "test": "glob -c \"node --import tsx -r tsconfig-paths/register --env-file=.env --no-warnings --test\" \"./src/**/*.test.ts\"",
+    "docker": "docker compose -f ./other/docker-compose.yml up -d"
+  },
+  "author": "Adrian Albisser",
+  "license": "ISC",
+  "dependencies": {
+    "@fastify/rate-limit": "^10.1.1",
+    "@paralleldrive/cuid2": "^2.2.2",
+    "ajv": "^8.17.1",
+    "drizzle-orm": "^0.36.1",
+    "fastify": "^5.1.0",
+    "fastify-plugin": "^5.0.1",
+    "pg": "^8.13.1",
+    "pino": "^9.5.0",
+    "tsconfig-paths": "^4.2.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.2.0",
+    "@eslint/js": "^9.15.0",
+    "@types/glob": "^8.1.0",
+    "@types/node": "^22.8.7",
+    "@types/pg": "^8.11.10",
+    "@typescript-eslint/eslint-plugin": "^8.12.2",
+    "@typescript-eslint/parser": "^8.14.0",
+    "drizzle-kit": "^0.28.0",
+    "eslint": "^9.14.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-node": "^11.1.0",
+    "glob": "^11.0.0",
+    "globals": "^15.12.0",
+    "json-schema-to-ts": "^3.1.1",
+    "pino-pretty": "^11.3.0",
+    "tap": "^21.0.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3"
+  },
+  "eslintIgnore": [
+    "/node_modules",
+    "/dist",
+    "/other/postgres-data",
+    "/other/minio-data"
+  ],
+  "engines": {
+    "node": ">=20"
+  }
+}
