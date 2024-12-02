@@ -6,8 +6,8 @@
   "scripts": {
     "lint": "eslint .",
     "dev": "tsx watch -r tsconfig-paths/register --env-file=.env src | pino-pretty --colorize --levelFirst --translateTime --ignore pid,hostname",
-    "build": "tsc -p tsconfig.json",
-    "start": "node -r tsconfig-paths/register src",
+    "build": "tsc -p tsconfig.json && tsc-alias -p tsconfig.json",
+    "start": "node dist",
     "test": "glob -c \"node --import tsx -r tsconfig-paths/register --env-file=.env --no-warnings --test\" \"./src/**/*.test.ts\"",
     "docker": "docker compose -f ./other/docker-compose.yml up -d"
   },
@@ -41,8 +41,12 @@
     "json-schema-to-ts": "^3.1.1",
     "pino-pretty": "^11.3.0",
     "tap": "^21.0.1",
+    "tsc-alias": "^1.8.10",
     "tsx": "^4.19.2",
     "typescript": "^5.6.3"
+  },
+  "imports": {
+    "#*": "./dist/*"
   },
   "eslintIgnore": [
     "/node_modules",
